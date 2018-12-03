@@ -1,4 +1,4 @@
-# aoc2017
+# aoc2018
 
 Solution to [Advent of Code 2018](http://adventofcode.com/2018).
 
