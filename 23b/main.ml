@@ -96,6 +96,30 @@ let execute bots =
   in
   aux (min_corner, max_corner) scale
 
+let ex1 =
+  {|
+pos=<10,12,12>, r=2
+pos=<12,14,12>, r=2
+pos=<16,12,12>, r=4
+pos=<14,14,14>, r=6
+pos=<50,50,50>, r=200
+pos=<10,10,10>, r=5
+|}
+
+(* This example demonstrates flaws in the solution above. The correct result is
+   1002, from the point (-1002, 0, 0). However, the early phases of solution
+   will bias toward a large number of non-overlapping volumes that are captured
+   when the scale is broad. In other words, the solution works for the given
+   input because the input happens to be structured in a specific way. *)
+let ex2 =
+  {|
+pos=<-1000,0,0>, r=2
+pos=<-1002,0,0>, r=2
+pos=<100,0,0>, r=1
+pos=<103,0,0>, r=1
+pos=<106,0,0>, r=1
+|}
+
 let actual_data = IO.stdin |> IO.read_all
 
 let bots = bots_from_string actual_data
